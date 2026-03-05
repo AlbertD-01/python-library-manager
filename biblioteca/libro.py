@@ -10,3 +10,7 @@ class Libro:
 
         return f"Título: {self.titulo} | Autor: {self.autor} | Año: {self.anio} | Estado: {estado}"
 
+    def __str__(self):
+        estado = "Disponible" if self.disponible else "Prestado"
+        return f" {self.titulo} - {self.autor} ({self.anio}) [{estado}]"
+
