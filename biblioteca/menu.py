@@ -1,5 +1,5 @@
-from biblioteca.biblioteca import Biblioteca
-from biblioteca.libro import Libro
+from biblioteca import Biblioteca
+from libro import Libro
 
 mi_biblioteca = Biblioteca()
 
@@ -8,7 +8,11 @@ while True:
     print("2. Añadir libro")
     print("3. Salir")
 
-    opcion = input("Escribe una opcion: ")
+    try:
+        opcion = input("Escribe una opcion: ")
+    except ValueError:
+        print("Error: Por favor, introduce un número del menú.")
+        continue
 
     if opcion == "1":
         for libro in mi_biblioteca.libros:
@@ -17,14 +21,17 @@ while True:
     elif opcion == "2":
         titulo = input("Escribe el titulo: ")
         autor = input("Escribe el autor: ")
-        anio = input("Escribe el año: ")
 
-        nuevo_libro = Libro(titulo, autor, anio)
+        try:
+            anio = int(input("Escribe el año: "))
 
-        mi_biblioteca.agregar_libro(nuevo_libro)
+            nuevo_libro = Libro(titulo, autor, anio)
 
-        print(f"{titulo} añadido con éxito")
+            mi_biblioteca.agregar_libro(nuevo_libro)
 
+            print(f"{titulo} añadido con éxito")
+        except ValueError:
+            print("El año debe ser un número entero")
 
     elif opcion == "3":
         print("Saliendo")
