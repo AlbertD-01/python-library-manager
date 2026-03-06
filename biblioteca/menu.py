@@ -6,7 +6,8 @@ mi_biblioteca = Biblioteca()
 while True:
     print("1. Ver catálogo")
     print("2. Añadir libro")
-    print("3. Salir")
+    print("3. Buscar libro")
+    print("4. Salir")
 
     try:
         opcion = input("Escribe una opcion: ")
@@ -34,6 +35,17 @@ while True:
             print("El año debe ser un número entero")
 
     elif opcion == "3":
+        busqueda = input("Escribe el titulo del libro: ")
+        resultado = mi_biblioteca.buscar_libro(busqueda)
+
+        if resultado:
+            print("Se ha encontrado el libro")
+            print(resultado)
+
+        else:
+            print(f"Lo sentimos, no se ha encontrado el libro {busqueda}")
+
+    elif opcion == "4":
         print("Saliendo")
         break
 
