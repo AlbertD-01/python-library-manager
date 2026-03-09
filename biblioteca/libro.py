@@ -14,3 +14,12 @@ class Libro:
         estado = "Disponible" if self.disponible else "Prestado"
         return f" {self.titulo} - {self.autor} ({self.anio}) [{estado}]"
 
+    def to_dict(self):
+        """Convierte el objeto Libro en un diccionario para JSON."""
+        return {
+            "titulo": self.titulo,
+            "autor": self.autor,
+            "anio": self.anio,
+            "disponible": self.disponible
+        }
+

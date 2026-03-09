@@ -1,6 +1,33 @@
+import json
+import os # Para comprobar si el archivo existe
+from libro import Libro
+
 class Biblioteca:
-    def __init__(self):
+    def __init__(self, archivo="biblioteca.json"):
         self.libros = []
+        self.archivo = archivo
+        self.cargar_datos() # Esto hace que al crear la biblioteca, ya tenga los libros guardados
+
+    def guardar_datos(self):
+        """Convierte los libros a diccionarios y los guarda en el archivo JSON."""
+        with open(self.archivo, "w", encoding="utf-8") as f:
+            # Transformamos cada objeto Libro en un diccionario usando to_dict()
+            lista_dicts = [libro.to_dict() for libro in self.libros]
+            json.dump(lista_dicts, f, indent=4, ensure_ascii=False)
+
+    def cargar_datos(self):
+        """Si el archivo existe, lee los datos y crea los objetos Libro."""
+        if os.path.exists(self.archivo):
+            try:
+                with open(self.archivo, "r", encoding="utf-8") as f:
+                    datos = json.load(f)
+                    for d in datos:
+                        # Reconstruimos el objeto Libro
+                        libro = Libro(d['titulo'], d['autor'], d['anio'])
+                        libro.disponible = d['disponible']
+                        self.libros.append(libro)
+            except Exception as e:
+                print(f"Error al cargar los datos: {e}")
 
     def agregar_libro(self, libro):
         self.libros.append(libro)
