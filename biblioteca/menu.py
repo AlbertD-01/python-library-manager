@@ -9,7 +9,8 @@ while True:
     print("3. Buscar libro")
     print("4. Prestar libro")
     print("5. Devolver libro")
-    print("6. Salir")
+    print("6. Estadisticas")
+    print("7. Salir")
 
     try:
         opcion = input("Escribe una opcion: ")
@@ -63,6 +64,13 @@ while True:
         print(mensaje)
 
     elif opcion == "6":
+
+        stats = mi_biblioteca.obtener_estadisticas()
+        print(f"Total: {stats['total']}")
+        print(f"Disponibles: {stats['disponibles']}")
+        print(f"Prestados: {stats['prestados']}")
+
+    elif opcion == "7":
         print("Saliendo")
         break
 
