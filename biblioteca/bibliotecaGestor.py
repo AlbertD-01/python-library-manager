@@ -23,3 +23,15 @@ class Biblioteca:
                 return f"El libro '{libro.titulo}' ya está prestado."
         else:
             return f"No se ha encontrado ningún libro con ese título."
+
+    def devolver_libro(self, titulo):
+        libro = self.buscar_libro(titulo)
+
+        if libro:
+            if not libro.disponible:
+                libro.disponible = True
+                return f"Gracias. Has devuelto el libro {libro.titulo}"
+            else:
+                return f"El libro {libro.titulo} ya estaba en la biblioteca."
+        else:
+            f"No se ha encontrado el libro en nuestro sistema"

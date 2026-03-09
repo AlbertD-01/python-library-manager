@@ -8,7 +8,8 @@ while True:
     print("2. Añadir libro")
     print("3. Buscar libro")
     print("4. Prestar libro")
-    print("5. Salir")
+    print("5. Devolver libro")
+    print("6. Salir")
 
     try:
         opcion = input("Escribe una opcion: ")
@@ -47,19 +48,21 @@ while True:
             print(f"Lo sentimos, no se ha encontrado el libro {busqueda}")
 
     elif opcion == "4":
-<<<<<<< HEAD
         titulo_prestamo = input("¿Qué libro quieres llevarte?: ")
         mensaje = mi_biblioteca.prestar_libro(titulo_prestamo)
         print(mensaje)
 
-
-=======
         prestamo = input("¿Qué título quieres llevarte?: ")
         mensaje = mi_biblioteca.prestar_libro(prestamo)
         print(mensaje)
 
->>>>>>> c14085fc4dd9bfaafa732ad682bfa4eb6cc98fd1
     elif opcion == "5":
+
+        titulo = input("¿Qué libro deseas devolver")
+        mensaje = mi_biblioteca.devolver_libro(titulo)
+        print(mensaje)
+
+    elif opcion == "6":
         print("Saliendo")
         break
 
