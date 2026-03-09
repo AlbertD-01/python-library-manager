@@ -31,6 +31,7 @@ class Biblioteca:
 
     def agregar_libro(self, libro):
         self.libros.append(libro)
+        self.guardar_datos()
         print(f"Libro '{libro.titulo}' agregado correctamente al catálogo.")
 
     def buscar_libro(self, titulo_buscado):
@@ -45,6 +46,7 @@ class Biblioteca:
         if libro:
             if libro.disponible:
                 libro.disponible = False
+                self.guardar_datos()
                 return f"Has tomado prestado: {libro.titulo}"
             else:
                 return f"El libro '{libro.titulo}' ya está prestado."
@@ -73,3 +75,13 @@ class Biblioteca:
             "disponibles": disponibles,
             "prestados": prestados
         }
+
+    def eliminar_libro(self, titulo):
+        libro = self.buscar_libro(titulo).lower()
+
+        if libro:
+            self.libros.remove(libro)
+            self.guardar_datos()  # Actualizamos el JSON
+            return f"🗑 El libro '{libro.titulo}' ha sido eliminado del sistema."
+        else:
+            return " No se pudo eliminar: El libro no existe."

@@ -10,7 +10,8 @@ while True:
     print("4. Prestar libro")
     print("5. Devolver libro")
     print("6. Estadisticas")
-    print("7. Salir")
+    print("7. Eliminar libro")
+    print("8. Salir")
 
     try:
         opcion = input("Escribe una opcion: ")
@@ -53,10 +54,6 @@ while True:
         mensaje = mi_biblioteca.prestar_libro(titulo_prestamo)
         print(mensaje)
 
-        prestamo = input("¿Qué título quieres llevarte?: ")
-        mensaje = mi_biblioteca.prestar_libro(prestamo)
-        print(mensaje)
-
     elif opcion == "5":
 
         titulo = input("¿Qué libro deseas devolver")
@@ -70,7 +67,25 @@ while True:
         print(f"Disponibles: {stats['disponibles']}")
         print(f"Prestados: {stats['prestados']}")
 
+
     elif opcion == "7":
+
+        titulo = input("¿Qué libro deseas eliminar DEFINITIVAMENTE?: ")
+
+        confirmar = input(f"¿Estás seguro de que quieres borrar '{titulo}'? (s/n): ")
+
+        if confirmar.lower() == "s":
+
+            mensaje = mi_biblioteca.eliminar_libro(titulo)
+
+            print(mensaje)
+
+        else:
+
+            print("Operación cancelada.")
+
+
+    elif opcion == "8":
         print("Saliendo")
         break
 
