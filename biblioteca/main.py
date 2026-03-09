@@ -1,5 +1,5 @@
 from libro import Libro
-from biblioteca import Biblioteca
+from bibliotecaGestor import Biblioteca
 
 mi_biblioteca = Biblioteca()
 

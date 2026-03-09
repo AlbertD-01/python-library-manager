@@ -1,4 +1,4 @@
-from biblioteca import Biblioteca
+from bibliotecaGestor import Biblioteca
 from libro import Libro
 
 mi_biblioteca = Biblioteca()
@@ -7,7 +7,9 @@ while True:
     print("1. Ver catálogo")
     print("2. Añadir libro")
     print("3. Buscar libro")
-    print("4. Salir")
+    print("4. Prestar libro")
+    print("5. Salir")
+
 
     try:
         opcion = input("Escribe una opcion: ")
@@ -46,6 +48,12 @@ while True:
             print(f"Lo sentimos, no se ha encontrado el libro {busqueda}")
 
     elif opcion == "4":
+        titulo_prestamo = input("¿Qué libro quieres llevarte?: ")
+        mensaje = mi_biblioteca.prestar_libro(titulo_prestamo)
+        print(mensaje)
+
+
+    elif opcion == "5":
         print("Saliendo")
         break
 
